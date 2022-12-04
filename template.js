@@ -1,3 +1,4 @@
+(require('../utils/arrayUtils'))();
 const fs = require('fs');
 const path = require('path');
 
@@ -11,5 +12,4 @@ fs.readFile(path.resolve(__dirname, 'input.txt'), 'utf8', (err, data) => {
     return;
   }
 
-  console.log(data);
 });

@@ -1,10 +1,11 @@
+(require('../utils/arrayUtils'))();
 const fs = require('fs');
 const path = require('path');
 
-function getMaxOfBestThreeDeerCalories(caloriesInput) {
-  const calories = [];
-  let actualCalories = 0;
+function getMax3DeerCalories(caloriesInput) {
+  const calories = []
 
+  let actualCalories = 0
   caloriesInput.forEach(el => {
     if (el === '') {
       calories.push(actualCalories);
@@ -16,19 +17,18 @@ function getMaxOfBestThreeDeerCalories(caloriesInput) {
   });
 
   return calories
-    .sort((a, b) => b - a)
+    .sortDesc()
     .slice(0, 3)
-    .reduce((sum, a) => sum + a, 0);
+    .sum();
 }
 
-fs.readFile(path.resolve(__dirname, 'input2.txt'), 'utf8', (err, data) => {
+fs.readFile(path.resolve(__dirname, 'input.txt'), 'utf8', (err, data) => {
   if (err) {
-    console.error(err)
+    console.error(err);
     return;
   }
 
-  const dataSplitted = data.split('\n');
-  const result = getMaxOfBestThreeDeerCalories(dataSplitted);
-
+  const dataSplitted = data.trim().split('\n');
+  const result = getMax3DeerCalories(dataSplitted);
   console.log(result);
 });
