@@ -28,9 +28,9 @@ with open('./input.txt') as f:
     for line in mapped_lines_2:
         (range_1, range_2) = get_range_limiters(line)
 
-        if range_1[0] >= range_2[0] and range_1[0] <= range_2[1]:
+        if range_2[0] <= range_1[0] <= range_2[1]:
             count_2 += 1
-        elif range_2[0] >= range_1[0] and range_2[0] <= range_1[1]:
+        elif range_1[0] <= range_2[0] <= range_1[1]:
             count_2 += 1
 
     print(count_1)

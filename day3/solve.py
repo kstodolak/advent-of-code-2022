@@ -7,7 +7,7 @@
 def get_number_score(chars_set):
     score = 0
     for char in chars_set:
-        if (char.islower()):
+        if char.islower():
             score += ord(char) - 96
         else:
             score += ord(char) - 38
