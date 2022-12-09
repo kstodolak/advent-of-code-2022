@@ -13,7 +13,9 @@ def get_new_position(head, tail):
     d_y = h_y - t_y
 
     if abs(d_x) > 1 or abs(d_y) > 1:
+        # if x distance < 2 take x of head else take x +/- 1
         n_x = (h_x - 1 if d_x > 0 else h_x + 1) if abs(d_x) > 1 else h_x
+        # if y distance < 2 take y of head else take y +/- 1
         n_y = (h_y - 1 if d_y > 0 else h_y + 1) if abs(d_y) > 1 else h_y
 
     return n_x, n_y
