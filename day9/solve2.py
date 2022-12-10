@@ -43,7 +43,8 @@ with open('./input.txt') as f:
 
     for i in range(1, 9):
         for j in range(len(t_visited[i-1])):
-            t_visited[i].append(get_new_position(t_visited[i-1][j], t_visited[i][j]))
+            t_visited[i].append(get_new_position(
+                t_visited[i-1][j], t_visited[i][j]))
 
     print(len(set(t_visited[0])))
     print(len(set(t_visited[8])))
