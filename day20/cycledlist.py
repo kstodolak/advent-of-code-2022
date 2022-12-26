@@ -41,6 +41,9 @@ class CycledList:
         new_node.next = node.next
         node.next.prev = new_node
         node.next = new_node
+        return new_node
+
+    # def move_after(self, node_after, node):
 
     def put_before(self, node, value):
         new_node = Node(value)
@@ -48,25 +51,29 @@ class CycledList:
         new_node.next = node
         node.prev.next = new_node
         node.prev = new_node
+        return new_node
 
     def from_array(self, input_arr):
         for el in input_arr:
             self.append(el)
 
-    def to_array(self, reverse=False):
+    def to_nodes_array(self, reverse=False):
         arr = []
         if not reverse:
             current = self.head
             while current.next is not self.head:
-                arr.append(current.value)
+                arr.append(current)
                 current = current.next
-            return [*arr, current.value]
+            return [*arr, current]
 
         current = self.head.prev
         while current is not self.head:
-            arr.append(current.value)
+            arr.append(current)
             current = current.prev
-        return [*arr, current.value]
+        return [*arr, current]
+
+    def to_array(self, reverse=False):
+        return list(map(lambda x: x.value, self.to_nodes_array(reverse)))
 
     def __repr__(self):
         return str(self.to_array())
